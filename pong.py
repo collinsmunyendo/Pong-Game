@@ -1,5 +1,6 @@
 # Simple Pong Game
 import turtle
+import os
 
 wn = turtle.Screen()
 wn.title("Pong by Collins Munyendo")
@@ -37,7 +38,7 @@ ball.color("white")
 ball.penup()
 ball.goto(0, 0)
 ball.dx = 2
-ball.dy = -2
+ball.dy = 2
 
 # Pen
 pen = turtle.Turtle()
@@ -88,10 +89,12 @@ while True:
     if ball.ycor() > 290:
         ball.sety(290)
         ball.dy *= -1
+        os.system("afplay bounce.wav&") # Change this to aplay if you are using Linux, afplay is for Mac
 
     if ball.ycor() < -290:
         ball.sety(-290)
         ball.dy *= -1
+        os.system("afplay bounce.wav&") # Change this to aplay if you are using Linux, afplay is for Mac
 
     if ball.xcor() > 390:
         ball.goto(0,0)
@@ -99,6 +102,7 @@ while True:
         score_a += 1
         pen.clear()
         pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align = "center", font=("Courier", 24, "normal"))
+        os.system("afplay bounce.wav&") # Change this to aplay if you are using Linux, afplay is for Mac
 
     if ball.xcor() < -390:
         ball.goto(0,0)
@@ -106,12 +110,15 @@ while True:
         score_b += 1
         pen.clear()
         pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align = "center", font=("Courier", 24, "normal"))
+        os.system("afplay bounce.wav&") # Change this to aplay if you are using Linux, afplay is for Mac
 
     # Paddle and ball collisions
     if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() -40):
         ball.setx(340)
         ball.dx *= -1
+        os.system("afplay bounce.wav&") # Change this to aplay if you are using Linux, afplay is for Mac
 
     if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() -40):
         ball.setx(-340)
         ball.dx *= -1
+        os.system("afplay bounce.wav&") # Change this to aplay if you are using Linux, afplay is for Mac
